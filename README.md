@@ -16,6 +16,8 @@ This API provides endpoints for managing actors and movies in a database. It req
 To start the server, from the starter directory run:
 
 ```bash
+pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+createdb capstone
 export FLASK_APP = flaskr
 flask run
 ```
