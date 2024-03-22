@@ -1,0 +1,36 @@
+-- Drop the database if it exists
+DROP DATABASE IF EXISTS capstone_test;
+
+-- Create the database
+CREATE DATABASE capstone_test;
+
+-- Connect to the database
+\c capstone_test;
+
+-- Create the custom type for GenderChoices
+CREATE TYPE GenderChoices AS ENUM ('MALE', 'FEMALE', 'NON_BINARY', 'OTHER');
+
+-- Create the actors table
+CREATE TABLE IF NOT EXISTS actors (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    age INTEGER,
+    gender GenderChoices
+);
+
+-- Create the movies table
+CREATE TABLE movies (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR NOT NULL,
+    release_date TIMESTAMP
+);
+
+-- Insert statements for the actors table
+INSERT INTO actors (name, age, gender) VALUES ('Actor 1', 30, 'MALE');
+INSERT INTO actors (name, age, gender) VALUES ('Actor 2', 25, 'FEMALE');
+INSERT INTO actors (name, age, gender) VALUES ('Actor 3', 35, 'NON_BINARY');
+
+-- Insert statements for the movies table
+INSERT INTO movies (title, release_date) VALUES ('Movie 1', '2023-01-01');
+INSERT INTO movies (title, release_date) VALUES ('Movie 2', '2024-03-15');
+INSERT INTO movies (title, release_date) VALUES ('Movie 3', '2022-07-20');
