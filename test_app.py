@@ -33,6 +33,7 @@ class CapstoneTestCase(unittest.TestCase):
         assistant_jwt = self.auth["roles"]["Casting Assistant"]["jwt_token"]
         director_jwt = self.auth["roles"]["Casting Director"]["jwt_token"]
         producer_jwt = self.auth["roles"]["Executive Producer"]["jwt_token"]
+
         self.auth_headers = {
             "Casting Assistant": f'Bearer {assistant_jwt}',
             "Casting Director": f'Bearer {director_jwt}',
@@ -62,7 +63,7 @@ class CapstoneTestCase(unittest.TestCase):
         self.assertTrue(data["success"])
         self.assertTrue(len(data["movies"]))
 
-     """Testing deletion of actor from database - covering success
+    """Testing deletion of actor from database - covering success
      and failures on 422 and unauthorized"""
     def test_delete_actor_success(self):
         header = {
@@ -98,7 +99,7 @@ class CapstoneTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 422)
         self.assertEqual(data["success"], False)
 
-     """Testing deletion of movies from database - covering success
+    """Testing deletion of movies from database - covering success
      and failures on 422 and unauthorized"""
     def test_delete_movie_success(self):
         header = {
@@ -131,7 +132,7 @@ class CapstoneTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 403)
         self.assertEqual(data["success"], False)
 
-     """Testing addition of actors from database - covering success
+    """Testing addition of actors from database - covering success
      and failure on 422 and unauthorized"""
     def test_add_actor_database_failure(self):
         header = {
@@ -178,8 +179,8 @@ class CapstoneTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data["success"], True)
 
-     """Testing addition of moviesfrom database - covering success
-     and failure on 422 and unauthorized"""
+    """Testing addition of moviesfrom database - covering success
+     and failure on 422 and unauthorized """
     def test_add_movie_success(self):
         header = {
             "Authorization": self.auth_headers["Executive Producer"]
@@ -224,7 +225,7 @@ class CapstoneTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 403)
         self.assertEqual(data["success"], False)
 
-     """Testing update of actors from database - covering success
+    """Testing update of actors from database - covering success
      and failure on unauthorized"""
     def test_update_actor(self):
         header = {
@@ -280,5 +281,4 @@ class CapstoneTestCase(unittest.TestCase):
 # Make the tests conveniently executable
 if __name__ == "__main__":
     unittest.main()
-
 
