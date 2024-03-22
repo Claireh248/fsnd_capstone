@@ -4,20 +4,27 @@ This API provides endpoints for managing actors and movies in a database. It req
 
 ## Installation
 
-1. Ensure you have Python and Flask installed.
-2. Clone the repository.
+1. Create a virtual env using `python -m env`
+2. run `source env/bin/activate`
 3. Install the required packages using `pip install -r requirements.txt`.
 4. Set up the database by running the database setup script.
 
 ## Usage
 
-### Starting the Server
+### Starting the Server Locally
 
 To start the server, from the starter directory run:
 
 ```bash
-python flaskr.py
+export FLASK_APP = flaskr
+flask run
 ```
+
+### Accessing Deployed Application
+
+The application is currently deployed on `https://fsnd-capstone-pt6p.onrender.com`
+
+This is the URL that is listed in the postman tests - the unit tests use a local database.
 
 ## Endpoints
 
@@ -87,7 +94,7 @@ python flaskr.py
       "success": true,
       "movie": {
         "id": 4,
-        "title": "New Movie",
+        "title": "Movie",
         "release_date": "2022-12-25T00:00:00"
       }
     }
@@ -100,7 +107,7 @@ python flaskr.py
 - **Description:** Deletes an actor from the database.
 - **Requires Authentication:** Yes (Casting Director or Executive Producer)
 - **Parameters:**
-  - `id` (integer, required): ID of the actor to delete.
+  - `id` (integer): ID of the actor to delete.
 - **Success Response:**
   - **Code:** 200
   - **Content:**
@@ -118,7 +125,7 @@ python flaskr.py
 - **Description:** Deletes a movie from the database.
 - **Requires Authentication:** Yes (Executive Producer)
 - **Parameters:**
-  - `id` (integer, required): ID of the movie to delete.
+  - `id` (integer): ID of the movie to delete.
 - **Success Response:**
   - **Code:** 200
   - **Content:**
@@ -136,7 +143,7 @@ python flaskr.py
 - **Description:** Updates an existing actor in the database.
 - **Requires Authentication:** Yes (Casting Director or Executive Producer)
 - **Parameters:**
-  - `id` (integer, required): ID of the actor to update.
+  - `id` (integer): ID of the actor to update.
 - **Success Response:**
   - **Code:** 200
   - **Content:**
@@ -159,7 +166,7 @@ python flaskr.py
 - **Description:** Updates an existing movie in the database.
 - **Requires Authentication:** Yes (Casting Director or Executive Producer)
 - **Parameters:**
-  - `id` (integer, required): ID of the movie to update.
+  - `id` (integer): ID of the movie to update.
 - **Success Response:**
   - **Code:** 200
   - **Content:**
