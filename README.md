@@ -17,8 +17,21 @@ To start the server, from the starter directory run:
 
 ```bash
 pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
-createdb capstone
 export FLASK_APP = flaskr
+flask run
+```
+
+Note this will still run with the deployed database, if you wish to run the application locally with a local database then:
+
+```bash
+pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+createdb capstone
+```
+
+Change the .env file database path to your local path, then:
+
+```bash
+export FLASK_APP=flaskr
 flask run
 ```
 
@@ -27,6 +40,25 @@ flask run
 The application is currently deployed on `https://fsnd-capstone-pt6p.onrender.com`
 
 This is the URL that is listed in the postman tests - the unit tests use a local database.
+
+### Deploying the Application to Render
+
+To deploy the application yourself follow the instructions below:
+
+1. Create Account or Sign Up to Render on `https://dashboard.render.com/#`
+2. Create a new POSTGRESQL database
+   - Enter name `Capstone` for database name
+   - Instance type: Free
+   - Click `Create Database`
+3. Update projects .env file with the external url of the deployed database.
+4. On Render, create a new Web Service
+5. Connect to your forked repository
+
+- Name: Capstone
+- instance type: Free
+- Build command: `pip install -r requirements.txt`
+- Internal Database URL: copy from database deployment
+- Click `Create Build`
 
 ## Endpoints
 

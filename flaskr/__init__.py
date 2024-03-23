@@ -1,5 +1,10 @@
 import os
-from flask import Flask, request, abort, jsonify
+from flask import (
+    Flask, 
+    request, 
+    abort, 
+    jsonify
+)
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 
@@ -25,6 +30,16 @@ def create_app(test_config=None):
 
 
     #ROUTES
+
+    '''
+    Endpoint which fetches all actor data
+    '''
+    @app.route('/', methods=['GET'])
+    def index():
+        return jsonify({
+            'message': 'Welcome to my Capstone API!' 
+        })
+
     '''
     Endpoint which fetches all actor data
     '''
@@ -57,9 +72,9 @@ def create_app(test_config=None):
     def create_actor(payload):
         body = request.get_json()
         
-        new_name = body.get("name", None)
-        new_age = body.get("age", None)
-        new_gender = body.get("gender", None)
+        new_name = body.get("name")
+        new_age = body.get("age")
+        new_gender = body.get("gender")
 
         try:
             new_actor = Actor(name = new_name, age=new_age, gender=new_gender)
@@ -88,8 +103,8 @@ def create_app(test_config=None):
     def create_movie(payload):
         body = request.get_json()
         
-        new_title= body.get("title", None)
-        new_release_date = body.get("release_date", None)
+        new_title= body.get("title")
+        new_release_date = body.get("release_date")
 
         try:
             new_movie = Movie(title=new_title, release_date=new_release_date)
